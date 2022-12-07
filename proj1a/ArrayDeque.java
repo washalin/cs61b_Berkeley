@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
-    T[] array;
-    int size;
-    int nextFirst;
-    int nextLast;
+    private T[] array;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
 
 
     public ArrayDeque() {
@@ -29,18 +29,18 @@ public class ArrayDeque<T> {
         array = a;
     }
 
-    public ArrayDeque(ArrayDeque other) {
-        array = (T[]) new Object[other.array.length];
-        size = other.size;
-        nextFirst = other.nextFirst;
-        nextLast = other.nextLast;
-        int iter = nextFirst + 1;
-        for (int i = 0; i < size; i++) {
-            int pos = (iter + array.length) % array.length;
-            array[pos] = (T) other.array[pos];
-            iter += 1;
-        }
-    }
+//    public ArrayDeque(ArrayDeque other) {
+//        array = (T[]) new Object[other.array.length];
+//        size = other.size;
+//        nextFirst = other.nextFirst;
+//        nextLast = other.nextLast;
+//        int iter = nextFirst + 1;
+//        for (int i = 0; i < size; i++) {
+//            int pos = (iter + array.length) % array.length;
+//            array[pos] = (T) other.array[pos];
+//            iter += 1;
+//        }
+//    }
 
     public void addFirst(T item) {
         if (array[nextFirst] != null) {
