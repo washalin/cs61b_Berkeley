@@ -65,9 +65,8 @@ public class ArrayDeque<T> {
     public boolean isEmpty() {
         if (size == 0) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     public int size() {
@@ -113,7 +112,7 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        return array[(nextFirst+1+index+array.length)%array.length];
+        return array[(nextFirst + 1 + index + array.length) % array.length];
     }
 
 }
