@@ -38,7 +38,6 @@ public class LinkedListDeque<T> {
     }
 
     public void addLast(T item) {
-
         if (size != 0) {
             sentinel.prev.next = new Node(sentinel.prev, item, sentinel);
             sentinel.prev = sentinel.prev.next;
@@ -82,41 +81,43 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (size > 0) {
-            size -= 1;
-            T temp = (T) sentinel.next.item;
-            sentinel.next = sentinel.next.next;
-            sentinel.next.prev = sentinel;
-            return temp;
+        if (isEmpty()) {
+            return null;
         }
-        return null;
+        //if (size > 0) {
+        size -= 1;
+        T temp = (T) sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+        return temp;
     }
 
     public T removeLast() {
-
-        if (size > 0) {
-            size -= 1;
-            T temp = (T) sentinel.prev.item;
-            sentinel.prev = sentinel.prev.prev;
-            sentinel.prev.next = sentinel;
-            return temp;
+        if (isEmpty()) {
+            return null;
         }
-        return null;
+        size -= 1;
+        T temp = (T) sentinel.prev.item;
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+        return temp;
     }
 
     public T get(int index) {
-        if (size > 0) {
-            if (size >= index) {
-                Node p = sentinel;
-                for (int i = 0; i <= index; i++) {
-                    p = p.next;
-                }
-                return (T) p.item;
-            } else {
-                System.out.println("your index is out of the size of deque!");
-            }
+        if (isEmpty()) {
+            return null;
         }
-        return null;
+        if (size >= index) {
+            Node p = sentinel;
+            for (int i = 0; i <= index; i++) {
+                p = p.next;
+            }
+            return (T) p.item;
+        } else {
+            System.out.println("your index is out of the size of deque!");
+            return null;
+        }
+
     }
 
     private T get(Node p, int index) {
@@ -127,13 +128,14 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if (size > 0) {
-            if (size >= index) {
-                return get(sentinel.next, index);
-            } else {
-                System.out.println("your index is out of the size of deque!");
-            }
+        if (isEmpty()) {
+            return null;
         }
-        return null;
+        if (size >= index) {
+            return get(sentinel.next, index);
+        } else {
+            System.out.println("your index is out of the size of deque!");
+            return null;
+        }
     }
 }
