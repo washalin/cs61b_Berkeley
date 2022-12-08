@@ -29,7 +29,7 @@ public class ArrayDeque<T> {
         array = a;
     }
 
-//    public ArrayDeque(ArrayDeque other) {
+    //    public ArrayDeque(ArrayDeque other) {
 //        array = (T[]) new Object[other.array.length];
 //        size = other.size;
 //        nextFirst = other.nextFirst;
@@ -41,14 +41,13 @@ public class ArrayDeque<T> {
 //            iter += 1;
 //        }
 //    }
-
     public void addFirst(T item) {
         if (array[(nextFirst + array.length) % array.length] != null) {
             resize(2 * array.length);
         }
         int pos = (nextFirst + array.length) % array.length;
         array[pos] = item;
-        nextFirst -= 1;
+        nextFirst = pos - 1;
         size += 1;
     }
 
@@ -58,7 +57,7 @@ public class ArrayDeque<T> {
         }
         int pos = (nextLast + array.length) % array.length;
         array[pos] = item;
-        nextLast += 1;
+        nextLast = pos + 1;
         size += 1;
     }
 
@@ -89,7 +88,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         float usage = (float) size / (float) array.length;
         if (usage < 0.25) {
             resize(array.length / 2);
@@ -97,13 +98,15 @@ public class ArrayDeque<T> {
         int pos = (nextFirst + 1 + array.length) % array.length;
         T tmp = array[pos];
         array[pos] = null;
-        nextFirst += 1;
+        nextFirst =pos;
         size -= 1;
         return tmp;
     }
 
     public T removeLast() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         float usage = (float) size / (float) array.length;
         if (usage < 0.25) {
             resize(array.length / 2);
@@ -111,13 +114,15 @@ public class ArrayDeque<T> {
         int pos = (nextLast - 1 + array.length) % array.length;
         T tmp = array[pos];
         array[pos] = null;
-        nextLast -= 1;
+        nextLast  = pos;
         size -= 1;
         return tmp;
     }
 
     public T get(int index) {
-        if (index >= size || index < 0) return null;
+        if (index >= size || index < 0) {
+            return null;
+        }
         return array[(nextFirst + 1 + index + array.length) % array.length];
     }
 

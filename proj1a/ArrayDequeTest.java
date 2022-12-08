@@ -34,5 +34,19 @@ public class ArrayDequeTest {
             t1.addFirst(i);
         }
         t1.printDeque();
+
+        ArrayDeque<Integer> t2 = new ArrayDeque<>();
+        t2.addFirst(0);
+        t2.addFirst(1);
+        t2.removeLast();
+        t2.isEmpty();
+        t2.removeLast();
+        t2.addFirst(5);
+        t2.addFirst(6);
+        t2.addFirst(7);
+        t2.addFirst(8);
+        t2.removeLast();
+        t2.addFirst(10);
+        t2.printDeque();
     }
 }

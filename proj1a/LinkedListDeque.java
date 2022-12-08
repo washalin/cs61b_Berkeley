@@ -40,7 +40,6 @@ public class LinkedListDeque<T> {
         }
         size += 1;
     }
-
     public void addLast(T item) {
         if (size != 0) {
             sentinel.prev.next = new Node(sentinel.prev, item, sentinel);
