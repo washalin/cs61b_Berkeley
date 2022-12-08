@@ -89,6 +89,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty()) return null;
         float usage = (float) size / (float) array.length;
         if (usage < 0.25) {
             resize(array.length / 2);
@@ -102,6 +103,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) return null;
         float usage = (float) size / (float) array.length;
         if (usage < 0.25) {
             resize(array.length / 2);
