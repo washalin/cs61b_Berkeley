@@ -29,7 +29,11 @@ public class LinkedListDeque<T> {
     public void addFirst(T item) {
 
         if (size != 0) {
-            sentinel.next = new Node(sentinel, item, sentinel.next);
+            Node newList = new Node(sentinel, item, sentinel.next);
+            //sentinel.next = new Node(sentinel, item, sentinel.next);
+            sentinel.next.prev = newList;
+            sentinel.next = newList;
+
         } else {
             sentinel.next = new Node(sentinel, item, sentinel);
             sentinel.prev = sentinel.next;
@@ -49,10 +53,11 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+//        if (size == 0) {
+//            return true;
+//        }
+//        return false;
+        return size == 0;
     }
 
     public int size() {
@@ -104,19 +109,19 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if (isEmpty()) {
+        if (isEmpty() || index >= size) {
             return null;
         }
-        if (size >= index) {
-            Node p = sentinel;
-            for (int i = 0; i <= index; i++) {
-                p = p.next;
-            }
-            return (T) p.item;
-        } else {
-            System.out.println("your index is out of the size of deque!");
-            return null;
+        //      if (size > index) {
+        Node p = sentinel;
+        for (int i = 0; i <= index; i++) {
+            p = p.next;
         }
+        return (T) p.item;
+//        } else {
+//            System.out.println("your index is out of the size of deque!");
+//            return null;
+//        }
 
     }
 
@@ -128,14 +133,14 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if (isEmpty()) {
+        if (isEmpty() || index >= size) {
             return null;
         }
-        if (size >= index) {
-            return get(sentinel.next, index);
-        } else {
-            System.out.println("your index is out of the size of deque!");
-            return null;
-        }
+        //if (size > index) {
+        return get(sentinel.next, index);
+//        } else {
+//            System.out.println("your index is out of the size of deque!");
+//            return null;
+//        }
     }
 }

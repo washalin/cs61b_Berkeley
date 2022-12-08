@@ -1,9 +1,11 @@
 /**
  * Performs some basic linked list tests.
  */
+import org.junit.Test;
 public class LinkedListDequeTest {
 
     /* Utility method for printing out empty checks. */
+    @Test
     public static boolean checkEmpty(boolean expected, boolean actual) {
         if (expected != actual) {
             System.out.println("isEmpty() returned " + actual + ", but expected: " + expected);
@@ -11,7 +13,7 @@ public class LinkedListDequeTest {
         }
         return true;
     }
-
+    @Test
     /* Utility method for printing out empty checks. */
     public static boolean checkSize(int expected, int actual) {
         if (expected != actual) {
@@ -20,7 +22,7 @@ public class LinkedListDequeTest {
         }
         return true;
     }
-
+    @Test
     /* Prints a nice message based on whether a test passed.
      * The \n means newline. */
     public static void printTestStatus(boolean passed) {
@@ -30,7 +32,7 @@ public class LinkedListDequeTest {
             System.out.println("Test failed!\n");
         }
     }
-
+    @Test
     /**
      * Adds a few things to the list, checking isEmpty() and size() are correct,
      * finally printing the results.
@@ -64,7 +66,7 @@ public class LinkedListDequeTest {
         printTestStatus(passed);
 
     }
-
+    @Test
     /**
      * Adds an item, then removes an item, and ensures that dll is empty afterwards.
      */
