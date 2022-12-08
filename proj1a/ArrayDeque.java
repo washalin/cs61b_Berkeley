@@ -43,7 +43,7 @@ public class ArrayDeque<T> {
 //    }
 
     public void addFirst(T item) {
-        if (array[nextFirst] != null) {
+        if (array[(nextFirst + array.length) % array.length] != null) {
             resize(2 * array.length);
         }
         int pos = (nextFirst + array.length) % array.length;
@@ -53,7 +53,7 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if (array[nextLast] != null) {
+        if (array[(nextLast + array.length) % array.length] != null) {
             resize(2 * array.length);
         }
         int pos = (nextLast + array.length) % array.length;
@@ -63,10 +63,11 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size == 0) {
-            return false;
-        }
-        return true;
+//        if (size == 0) {
+//            return false;
+//        }
+//        return true;a
+        return size == 0;
     }
 
     public int size() {
@@ -84,7 +85,7 @@ public class ArrayDeque<T> {
             System.out.print(array[pos] + " ");
             iter += 1;
         }
-        System.out.print("/n");
+        System.out.print("\n");
     }
 
     public T removeFirst() {
@@ -96,6 +97,7 @@ public class ArrayDeque<T> {
         T tmp = array[pos];
         array[pos] = null;
         nextFirst += 1;
+        size -= 1;
         return tmp;
     }
 
@@ -108,10 +110,12 @@ public class ArrayDeque<T> {
         T tmp = array[pos];
         array[pos] = null;
         nextLast -= 1;
+        size -= 1;
         return tmp;
     }
 
     public T get(int index) {
+        if (index >= size) return null;
         return array[(nextFirst + 1 + index + array.length) % array.length];
     }
 
