@@ -98,7 +98,7 @@ public class ArrayDeque<T> {
         int pos = (nextFirst + 1 + array.length) % array.length;
         T tmp = array[pos];
         array[pos] = null;
-        nextFirst =pos;
+        nextFirst = pos;
         size -= 1;
         return tmp;
     }
@@ -114,7 +114,7 @@ public class ArrayDeque<T> {
         int pos = (nextLast - 1 + array.length) % array.length;
         T tmp = array[pos];
         array[pos] = null;
-        nextLast  = pos;
+        nextLast = pos;
         size -= 1;
         return tmp;
     }
