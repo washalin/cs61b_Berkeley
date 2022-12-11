@@ -18,24 +18,22 @@ public class Palindrome {
             return true;
         }
         boolean isPal = true;
-        for (int i = 0; i < word.length()/2; i++) {
-            if (word.charAt(i) == word.charAt(word.length()-1-i)){
-                isPal = true;
-            }
-            else {
-               isPal = false;
-               break;
+        for (int i = 0; i < word.length() / 2; i++) {
+            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
+                isPal = false;
+                break;
             }
         }
         return isPal;
     }
+
     public boolean isPalindrome(String word, CharacterComparator cc) {
+        if (word.length() == 0 || word.length() == 1) {
+            return true;
+        }
         boolean ispal = true;
-        for (int i = 0; i < word.length()/2; i++) {
-            if (cc.equalChars(word.charAt(word.length()-i-1),word.charAt(i))){
-                ispal = true;
-            }
-            else {
+        for (int i = 0; i < word.length() / 2; i++) {
+            if (!cc.equalChars(word.charAt(word.length() - i - 1), word.charAt(i))) {
                 ispal = false;
                 break;
             }
