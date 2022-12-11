@@ -11,7 +11,7 @@ public class PalindromeFinder {
                 System.out.println(word);
             }
 
-            if (palindrome.isPalindrome(word,cc)){
+            if (palindrome.isPalindrome(word, cc)) {
                 System.out.println("word off by 2");
                 System.out.println(word);
             }

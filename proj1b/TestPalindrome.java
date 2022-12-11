@@ -16,6 +16,7 @@ public class TestPalindrome {
         }
         assertEquals("persiflage", actual);
     }
+
     @Test
     public void testIsPalindrome() {
         Palindrome palin = new Palindrome();
@@ -28,8 +29,22 @@ public class TestPalindrome {
 
         assertTrue(palin.isPalindrome("aaaaa"));
 
-        CharacterComparator off= new OffByOne();
-        assertTrue(palin.isPalindrome("flake",off));
-    }
+        assertTrue(palin.isPalindrome("cac"));
 
+        assertTrue(palin.isPalindrome(""));
+
+        assertTrue(palin.isPalindrome("%"));
+
+
+        CharacterComparator off = new OffByOne();
+
+        assertTrue(palin.isPalindrome("flake", off));
+
+        assertTrue(palin.isPalindrome("", off));
+
+        assertTrue(palin.isPalindrome("a", off));
+
+        assertFalse(palin.isPalindrome("aba",off));
+
+    }
 }
